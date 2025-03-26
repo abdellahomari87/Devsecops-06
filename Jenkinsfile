@@ -32,7 +32,8 @@ environment {
         }
             steps{
             withSonarQubeEnv('SonarQubeServer') { // If you have configured more than one global server connection, you can specify its name
-              sh "${scannerHome}/bin/sonar-scanner"
+                sh 'mvn clean verify sonar:sonar'
+                sh "${scannerHome}/bin/sonar-scanner"
             }
             }
         }
