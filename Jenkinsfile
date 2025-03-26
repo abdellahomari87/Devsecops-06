@@ -28,10 +28,10 @@ environment {
 
         stage('SonarQube analysis') {
         environment {
-          scannerHome = tool 'satish-sonarqube-scanner'
+          scannerHome = tool 'SonarScanner'
         }
             steps{
-            withSonarQubeEnv('satish-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+            withSonarQubeEnv('Devsecops-06') { // If you have configured more than one global server connection, you can specify its name
               sh "${scannerHome}/bin/sonar-scanner"
             }
             }
