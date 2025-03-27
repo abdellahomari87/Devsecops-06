@@ -26,14 +26,17 @@ environment {
             }
         }
 
-        stage('SonarQube analysis') {
+        stage('SonarCloud analysis') {
         environment {
-          scannerHome = tool 'SonarScanner'
+          SONAR_TOKEN = credentials('sonarcloud-token')
         }
             steps{
-            withSonarQubeEnv('SonarQubeServer') { // If you have configured more than one global server connection, you can specify its name
-                sh 'mvn clean verify sonar:sonar -Dmaven.test.skip=true'
-                sh "${scannerHome}/bin/sonar-scanner"
+            withSonarQubeEnv('SonarCloud') { // If you have configured more than one global server connection, you can specify its name
+              sh """
+                mvn clean verify sonar:sonar \
+                -Dsonar.login=$SONAR_TOKEN \
+                -Dmaven.test.skip=true
+              """
             }
             }
         }
