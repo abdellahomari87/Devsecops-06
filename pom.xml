@@ -8,7 +8,7 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>abdellah.omari88@gmail.Com</groupId>
+	<groupId>io.github.abdellahomari87</groupId>
 	<artifactId>demo-workshop</artifactId>
 	<version>2.1.2-SNAPSHOT</version>
 	<name>demo-workshop</name>
