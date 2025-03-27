@@ -119,6 +119,13 @@
 	</build>
 
 	<distributionManagement>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>a0o869qzyoifg-artifactory-primary-0-
+	snapshots</name>
+                    <url>https://trialavw1yt.jfrog.io/artifactory/mmmmm-
+	libs-snapshot</url>
+                </snapshotRepository>
 		<repository>
 			<id>dev</id>
 			<url>file://jarstaging</url>
