@@ -123,8 +123,7 @@
                     <id>snapshots</id>
                     <name>a0o869qzyoifg-artifactory-primary-0-
 	snapshots</name>
-                    <url>https://trialavw1yt.jfrog.io/artifactory/mmmmm-
-	libs-snapshot</url>
+                    <url>https://trialavw1yt.jfrog.io/artifactory/mmmmm-libs-snapshot</url>
                 </snapshotRepository>
 		<repository>
 			<id>dev</id>
