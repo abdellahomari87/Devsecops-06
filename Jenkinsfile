@@ -1,6 +1,6 @@
 def registry = 'https://trialavw1yt.jfrog.io'
-def imageName = 'satishk.jfrog.io/satish-docker-local/sample_app'
-def version   = '2.1.2'
+def imageName = 'trialavw1yt.jfrog.io/omari87-docker-local/sample_app'
+def version   = '2.1.2-SNAPSHOT'
 pipeline {
     agent {
         node {
