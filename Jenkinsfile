@@ -62,8 +62,7 @@ environment {
                  echo '<--------------- Jar Publish Started --------------->'
             
                  // Copier le bon artefact SNAPSHOT dans le dossier staging
-                 sh 'mkdir -p jarstaging && cp target/*.jar jarstaging/ && cp target/*.pom jarstaging/'
-
+                 sh 'mkdir -p jarstaging && cp target/*.jar jarstaging/ && cp target/*.pom jarstaging/ || true'
                  def server = Artifactory.newServer url:registry+"/artifactory", credentialsId:"jfrog_cred"
                  def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}"
                  def uploadSpec = """{
