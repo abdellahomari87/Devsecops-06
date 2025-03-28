@@ -13,15 +13,13 @@ environment {
     stages {
         stage("build") {
             steps {
-                echo "----------- build started ----------"
+                echo "----------- build completed ----------"
                 withCredentials([usernamePassword(credentialsId: 'jfrog_cred', usernameVariable: 'abdellah.omari88@gmail.com', passwordVariable: 'cmVmdGtuOjAxOjE3NzQ2NDkwODU6VlNRMHdOVHlCVHVmcmtXQWF2anJOaWVoUXZV')]) {
-                    sh '''
-                        mvn clean deploy -Dmaven.test.skip=true \
-                        -Dusername=$JFROG_USER \
-                        -Dpassword=$JFROG_PASS
+                    sh '''#!/bin/bash
+                        echo "JFrog username: $JFROG_USER"
+                        mvn clean deploy -Dmaven.test.skip=true -Dusername=$JFROG_USER -Dpassword=$JFROG_PASS
                     '''
                 }
-                echo "----------- build completed ----------"
             }        
         }
         stage("test"){
