@@ -15,8 +15,11 @@ environment {
             steps {
                 echo "----------- build started ----------"
                 withCredentials([usernamePassword(credentialsId: 'jfrog_cred', usernameVariable: 'abdellah.omari88@gmail.com', passwordVariable: 'cmVmdGtuOjAxOjE3NzQ2NDkwODU6VlNRMHdOVHlCVHVmcmtXQWF2anJOaWVoUXZV')]) {
-                    sh 'mvn clean deploy -Dmaven.test.skip=true -Dusername=$JFROG_USER -Dpassword=$JFROG_PASS'
-                    sh 'mvn clean deploy -Dmaven.test.skip=true'
+                    sh '''
+                        mvn clean deploy -Dmaven.test.skip=true \
+                        -Dusername=$JFROG_USER \
+                        -Dpassword=$JFROG_PASS
+                    '''
                 }
                 echo "----------- build completed ----------"
             }        
