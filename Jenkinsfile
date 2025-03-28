@@ -57,31 +57,33 @@ environment {
             }
         }
          stage("Jar Publish") {
-        steps {
-            script {
-                    echo '<--------------- Jar Publish Started --------------->'
-                     def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"jfrog_cred"
-                     def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}";
-                     def uploadSpec = """{
-                          "files": [
-                            {
-                              "pattern": "jarstaging/(*)",
-                              "target": "mmmmm-libs-snapshot-local/{1}",
-                              "flat": "false",
-                              "props" : "${properties}",
-                              "exclusions": [ "*.sha1", "*.md5"]
-                            }
-                         ]
-                     }"""
-                     def buildInfo = server.upload(uploadSpec)
-                     buildInfo.env.collect()
-                     server.publishBuildInfo(buildInfo)
-                     echo '<--------------- Jar Publish Ended --------------->'  
+             steps {
+                 script {
+                 echo '<--------------- Jar Publish Started --------------->'
             
-            }
+                 // Copier le bon artefact SNAPSHOT dans le dossier staging
+                 sh 'mkdir -p jarstaging && cp target/*.jar jarstaging/ && cp target/*.pom jarstaging/'
+
+                 def server = Artifactory.newServer url:registry+"/artifactory", credentialsId:"jfrog_cred"
+                 def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}"
+                 def uploadSpec = """{
+                "files": [
+                    {
+                        "pattern": "jarstaging/*",
+                        "target": "mmmmm-libs-snapshot-local/io/github/abdellahomari87/demo-workshop/${version}/",
+                        "flat": "true",
+                        "props" : "${properties}"
+                    }
+                ]
+                }"""
+                def buildInfo = server.upload(uploadSpec)
+                buildInfo.env.collect()
+                server.publishBuildInfo(buildInfo)
+
+                echo '<--------------- Jar Publish Ended --------------->'
+                }
         }   
     }
-
 
     stage(" Docker Build ") {
       steps {
