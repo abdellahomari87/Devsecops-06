@@ -14,7 +14,7 @@ environment {
         stage("build") {
             steps {
                 echo "----------- build completed ----------"
-                withCredentials([usernamePassword(credentialsId: 'jfrog_cred', usernameVariable: 'abdellah.omari88@gmail.com', passwordVariable: 'cmVmdGtuOjAxOjE3NzQ2OTY0OTQ6OURPTkV4VFFYb1ZWN3pNNHpWSUpXMmVWMDFM')]) {
+                withCredentials([usernamePassword(credentialsId: 'jfrog_cred', usernameVariable: 'JFROG_USER', passwordVariable: 'JFROG_PASS')]) {
                     sh '''#!/bin/bash
                         echo "JFrog username: $JFROG_USER"
                         mvn clean deploy -Dmaven.test.skip=true -Dusername=$JFROG_USER -Dpassword=$JFROG_PASS
