@@ -66,15 +66,16 @@ environment {
                  def server = Artifactory.newServer url:registry+"/artifactory", credentialsId:"jfrog_cred"
                  def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}"
                  def uploadSpec = """{
-                "files": [
-                    {
-                        "pattern": "jarstaging/*",
-                        "target": "mmmmm-libs-snapshot-local/io/github/abdellahomari87/demo-workshop/${version}/",
-                        "flat": "true",
-                        "props" : "${properties}"
-                    }
-                ]
-                }"""
+                   "files": [
+                     {
+                       "pattern": "jarstaging/*.jar",
+                       "target": "mmmmm-libs-snapshot-local/io/github/abdellahomari87/demo-workshop/${version}/",
+                       "flat": true,
+                       "props" : "${properties}"
+                      }
+                    ]
+                 }"""
+
                 def buildInfo = server.upload(uploadSpec)
                 buildInfo.env.collect()
                 server.publishBuildInfo(buildInfo)
