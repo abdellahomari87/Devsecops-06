@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <url>https://trialavw1yt.jfrog.io/artifactory/mmmmm-libs-snapshot</url>
-    </snapshotRepository>
-</distributionManagement>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -20,7 +14,12 @@
 	<name>demo-workshop</name>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
-
+        <distributionManagement>
+            <snapshotRepository>
+                <id>snapshots</id>
+                <url>https://trialavw1yt.jfrog.io/artifactory/mmmmm-libs-snapshot</url>
+            </snapshotRepository>
+        </distributionManagement>
 	<properties>
 		<java.version>1.8</java.version>
 		 <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
