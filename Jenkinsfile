@@ -17,7 +17,7 @@ environment {
                 withCredentials([usernamePassword(credentialsId: 'jfrog_cred', usernameVariable: 'JFROG_USER', passwordVariable: 'JFROG_PASS')]) {
                     sh '''#!/bin/bash
                         echo "JFrog username: $JFROG_USER"
-                        mvn clean deploy -Dmaven.test.skip=true -Dusername=$JFROG_USER -Dpassword=$JFROG_PASS
+                        mvn clean deploy -Dmaven.test.skip=true -s /home/ubuntu/.m2/settings.xml
                     '''
                 }
             }        
