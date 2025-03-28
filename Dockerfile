@@ -1,3 +1,3 @@
 FROM openjdk:8
-ADD jarstaging/com/omari87/demo-workshop/2.1.2/demo-workshop-2.1.2.jar sample_app.jar 
+ADD jarstaging/demo-workshop-2.1.2-SNAPSHOT.jar sample_app.jar 
 ENTRYPOINT [ "java", "-jar", "sample_app.jar" ]
