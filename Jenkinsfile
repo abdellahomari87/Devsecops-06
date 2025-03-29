@@ -116,7 +116,7 @@ pipeline {
             steps {
                 script {
                     echo '<--------------- Helm Deploy Started --------------->'
-                    sh 'helm install sample-app ./chart'
+                    sh 'helm upgrade --install sample-app ./chart'
                     echo '<--------------- Helm Deploy Ends --------------->'
                 }
             }
