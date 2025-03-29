@@ -1,0 +1,7 @@
+image:
+  repository: trialavw1yt.jfrog.io/mmmm-omari87-docker-local/sample_app
+  tag: 2.1.2-SNAPSHOT
+
+service:
+  type: LoadBalancer
+  port: 8080
